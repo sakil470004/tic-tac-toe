@@ -41,7 +41,6 @@ export default function GameUi() {
             <GameBox
               key={index}
               index={index}
-              value={value}
               gameLogic={gameLogic}
               setGameLogic={setGameLogic}
               player={player}
@@ -49,6 +48,8 @@ export default function GameUi() {
               winningLogic={winningLogic}
               accepted={accepted}
               setAccepted={setAccepted}
+              setWinnerIndex={setWinnerIndex}
+              winnerIndex={winnerIndex}
             />
           );
         })}
