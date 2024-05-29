@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import GameBox from "./GameBox";
 
 export default function GameUi() {
   const [gameLogic, setGameLogic] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0]);
+
   //   here player 1 is represented by 1 and player 2 is represented by 2
   //  player 1 is represented by x and player 2 is represented by o
   // player true means player 1 and false means player 2
@@ -26,6 +27,7 @@ export default function GameUi() {
     setAccepted(false);
     setWinnerIndex(null);
   };
+
   return (
     <div>
       <button
