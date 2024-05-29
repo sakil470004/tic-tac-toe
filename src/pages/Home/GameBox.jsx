@@ -9,6 +9,8 @@ function GameBox({
   player,
   setPlayer,
   winningLogic,
+  accepted,
+  setAccepted,
 }) {
   return (
     <div className=" w-48 h-48 border-4 bg-blue-500 border-blue-500">
@@ -16,7 +18,7 @@ function GameBox({
         className="w-full p-2 h-full bg-white"
         onClick={() => {
           // if the box is empty then only we can change the value
-          if (gameLogic[index] === 0) {
+          if (gameLogic[index] === 0 && !accepted) {
             //   setGameLogic((prev) => {
             //     const newGameLogic = [...prev];
             //     newGameLogic[index] = player ? 1 : 2;
@@ -34,6 +36,7 @@ function GameBox({
               ) {
                 setGameLogic(newGameLogic);
                 toast.success(`Player ${player ? 1 : 2} has won the game`);
+                setAccepted(true);
                 return;
               }
             }
@@ -41,6 +44,7 @@ function GameBox({
             // check if the game is draw
             if (!newGameLogic.includes(0)) {
               toast.error("The game is draw");
+              setAccepted(true);
             }
 
             setGameLogic(newGameLogic);

@@ -17,22 +17,42 @@ export default function GameUi() {
     [2, 4, 6],
   ];
   const [player, setPlayer] = useState(true);
+  const [accepted, setAccepted] = useState(false);
+  const [winnerIndex, setWinnerIndex] = useState(null);
+
+  const handleReset = () => {
+    setGameLogic([0, 0, 0, 0, 0, 0, 0, 0, 0]);
+    setPlayer(true);
+    setAccepted(false);
+    setWinnerIndex(null);
+  };
   return (
-    <div className="grid grid-cols-3 ">
-      {gameLogic.map((value, index) => {
-        return (
-          <GameBox
-            key={index}
-            index={index}
-            value={value}
-            gameLogic={gameLogic}
-            setGameLogic={setGameLogic}
-            player={player}
-            setPlayer={setPlayer}
-            winningLogic={winningLogic}
-          />
-        );
-      })}
+    <div>
+      <button
+        onClick={handleReset}
+        className="btn btn-error btn-sm btn-outline mb-4"
+      >
+        Reset
+      </button>
+
+      <div className="grid grid-cols-3 ">
+        {gameLogic.map((value, index) => {
+          return (
+            <GameBox
+              key={index}
+              index={index}
+              value={value}
+              gameLogic={gameLogic}
+              setGameLogic={setGameLogic}
+              player={player}
+              setPlayer={setPlayer}
+              winningLogic={winningLogic}
+              accepted={accepted}
+              setAccepted={setAccepted}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 }
